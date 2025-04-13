@@ -1,0 +1,11 @@
+<h2>Üdv, {{ currentUser?.name }}!</h2>
+
+<h3>Órák, amikre jelentkeztél:</h3>
+<div class="session-container">
+  <div class="session-card" *ngFor="let session of userSessions">
+    <h4>{{ session.title }}</h4>
+    <p>Időpont: {{ session.date }}</p>
+    <p>Oktató: {{ session.instructor }}</p>
+    <button (click)="removeSession(session.id)">Óra leadása</button>
+  </div>
+</div>

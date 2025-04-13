@@ -1,0 +1,59 @@
+/* home.component.scss */
+
+/* Kártyák tárolása */
+.instructors-container, .sessions-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* Kártyák alap stílusai */
+  .card {
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Kép stílusok */
+  .card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Kártya szöveg rész */
+  .card-body {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    
+  }
+  
+  .card-text {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+  }
+  
+  /* Reszponzív szabályok */
+  @media (max-width: 768px) {
+    .card {
+      width: 100%;
+    }
+  }
+  
+  

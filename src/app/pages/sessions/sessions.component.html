@@ -1,0 +1,11 @@
+<h2>Közelgő jógaórák</h2>
+<div class="sessions-container">
+  <div class="session-card" *ngFor="let session of sessions">
+    <h3>{{ session.title }}</h3>
+    <p>Időpont: {{ session.date }}</p>
+    <p>Oktató: {{ session.instructor }}</p>
+
+    <button *ngIf="authService.isAuthenticated()" (click)="signUp(session)">Jelentkezem</button>
+    <p *ngIf="!authService.isAuthenticated()">Bejelentkezés szükséges az óra jelentkezéshez.</p>
+  </div>
+</div>

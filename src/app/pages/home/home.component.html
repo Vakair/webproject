@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Üdvözlünk a JógaStúdiónkban!</h1>
+    <p>
+      Fedezd fel a testi-lelki egyensúlyt oktatóink segítségével!
+    </p>
+  
+    <h2>Oktatóink</h2>
+    <div class="instructors-container">
+      <div *ngFor="let instructor of instructors" class="card">
+        <img [src]="instructor.image" alt="{{ instructor.name }}" class="card-img">
+        <div class="card-body">
+          <h5 class="card-title">{{ instructor.name }}</h5>
+          <p class="card-text">{{ instructor.description }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <h2>Következő jógaórák</h2>
+    <div class="sessions-container">
+      <div *ngFor="let session of upcomingSessions" class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ session.title }}</h5>
+          <p class="card-text">Időpont: {{ session.date }}</p>
+          <p class="card-text">Helyszín: {{ session.location }}</p>
+        </div>
+      </div>
+  </div>
+  

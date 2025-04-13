@@ -1,0 +1,43 @@
+.session-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .session-card {
+    background: #f2f2f2;
+    border-radius: 12px;
+    padding: 1rem;
+    width: 300px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  
+    h4 {
+      margin-top: 0;
+      color: #333;
+    }
+  
+    p {
+      margin: 0.3rem 0;
+      color: #555;
+    }
+
+    button {
+        margin-top: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+      
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+
+  }
+  

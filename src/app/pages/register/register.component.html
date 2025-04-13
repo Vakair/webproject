@@ -1,0 +1,32 @@
+<div class="register-container">
+    <div class="register-card">
+      <h2>Regisztráció</h2>
+  
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <div class="form-group">
+          <label for="name">Név:</label>
+          <input type="text" id="name" name="name" required [(ngModel)]="user.name" />
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required [(ngModel)]="user.email" />
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Jelszó:</label>
+          <input type="password" id="password" name="password" required [(ngModel)]="user.password" />
+        </div>
+  
+        <div class="form-group">
+          <label for="confirmPassword">Jelszó újra:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required [(ngModel)]="user.confirmPassword" />
+        </div>
+  
+        <button type="submit">Regisztráció</button>
+  
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+      </form>
+    </div>
+  </div>
+  
