@@ -1,11 +1,23 @@
-<h2>Közelgő jógaórák</h2>
-<div class="sessions-container">
-  <div class="session-card" *ngFor="let session of sessions">
-    <h3>{{ session.title }}</h3>
-    <p>Időpont: {{ session.date }}</p>
-    <p>Oktató: {{ session.instructor }}</p>
+<h2 class="title">Közelgő jógaórák</h2>
 
-    <button *ngIf="authService.isAuthenticated()" (click)="signUp(session)">Jelentkezem</button>
-    <p *ngIf="!authService.isAuthenticated()">Bejelentkezés szükséges az óra jelentkezéshez.</p>
-  </div>
+<div class="sessions-container">
+  <mat-card class="session-card" *ngFor="let session of sessions">
+    <mat-card-header>
+      <mat-card-title>{{ session.title }}</mat-card-title>
+      <mat-card-subtitle>{{ session.date | firestoreDate }} • {{ session.location }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>Oktató: {{ session.tartja}}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" *ngIf="authService.isAuthenticated()" (click)="signUp(session)">
+        Jelentkezem
+      </button>
+      <p *ngIf="!authService.isAuthenticated()" class="login-message">
+        Bejelentkezés szükséges az óra jelentkezéshez.
+      </p>
+    </mat-card-actions>
+  </mat-card>
 </div>

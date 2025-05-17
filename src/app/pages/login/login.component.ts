@@ -17,13 +17,12 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    const success = this.authService.login(this.email, this.password);
-
-    if (success) {
-      this.router.navigate(['/profile']); // Ha sikerült a bejelentkezés, átirányítás a profil oldalra
-    } else {
-      this.errorMessage = 'Hibás email vagy jelszó!';
+  async onSubmit() {
+    try {
+      await this.authService.login(this.email, this.password);
+      this.router.navigate(['/profile']);
+    } catch (error: any) {
+      this.errorMessage = error.message || 'Hibás email vagy jelszó!';
     }
   }
 }

@@ -1,35 +1,52 @@
+@use "sass:color";
+
 .sessions-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.session-card {
+  background: #f3f6f1;
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+
+  mat-card-header {
+    background-color: #6b8e23;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
   }
-  
-  .session-card {
-    background: #f2f2f2;
-    border-radius: 12px;
+
+  mat-card-content {
     padding: 1rem;
-    width: 300px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: center;
-  
-    h3 {
-      margin-top: 0;
-    }
-  
-    button {
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #6a9e7f;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-  
-      &:hover {
-        background: #558c6b;
-      }
+    color: #333;
+  }
+
+  mat-card-actions {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  button {
+    background-color: #6b8e23;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.3rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust(#6b8e23, $lightness: -10%);
     }
   }
-  
+
+  .login-message {
+    color: #6b8e23;
+    font-style: italic;
+    font-weight: 600;
+  }
+}

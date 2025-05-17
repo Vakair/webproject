@@ -1,26 +1,31 @@
+@use "sass:color";
+
 nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-  
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-  
-      li {
-        margin-right: 20px;
-  
-        a {
-          color: white;
-          text-decoration: none;
-        }
-  
-        a:hover {
-          text-decoration: underline;
-        }
-      }
+  background-color: #f3f6f1;
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  a {
+    text-decoration: none;
+    color: #4a6c2b;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust(#6b8e23, $lightness: 40%);
+      color: #6b8e23;
     }
   }
-  
+}

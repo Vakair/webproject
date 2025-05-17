@@ -15,14 +15,17 @@
       </div>
     </div>
   
-    <h2>Következő jógaórák</h2>
-    <div class="sessions-container">
-      <div *ngFor="let session of upcomingSessions" class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ session.title }}</h5>
-          <p class="card-text">Időpont: {{ session.date }}</p>
-          <p class="card-text">Helyszín: {{ session.location }}</p>
-        </div>
+  <h2>Következő jógaórák</h2>
+  <div class="sessions-container">
+    <div *ngFor="let session of upcomingSessions" class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ session.title }}</h5>
+        <p class="card-text">
+          Időpont: {{ session.date.toDate() | firestoreDate }}
+        </p>
+        <p class="card-text">Helyszín: {{ session.location }}</p>
       </div>
+    </div>
   </div>
+</div>
   

@@ -1,64 +1,74 @@
+@use "sass:color";
+
 .register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    background-color: #f4f4f4;
-  }
-  
-  .register-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    max-width: 420px;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-  
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #f3f6f1;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.register-card {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  color: #4a6c2b;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+
   label {
-    margin-bottom: 0.25rem;
-    font-weight: bold;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #4a6c2b;
   }
-  
+
   input {
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  button {
     width: 100%;
-    padding: 0.75rem;
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 1.5px solid #a4c639;
+    border-radius: 5px;
     font-size: 1rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background-color 0.2s ease;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #6b8e23;
+      outline: none;
+    }
   }
-  
-  button:hover {
-    background-color: #005fa3;
+}
+
+button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #6b8e23;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust(#6b8e23, $lightness: -10%);
   }
-  
-  .error {
-    color: red;
-    margin-top: 1rem;
-    text-align: center;
+
+  &:disabled {
+    background-color: #9dbf6d;
+    cursor: not-allowed;
   }
-  
+}
+
+.error {
+  color: #e74c3c;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  text-align: center;
+}

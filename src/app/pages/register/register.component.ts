@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,35 +11,49 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  // Felhasználói adatok tárolása
   user = {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    sessions: []
   };
-
-  errorMessage: string = '';
+  confirmPassword: string = '';  // Jelszó megerősítés mező
+  errorMessage: string = '';     // Hibaüzenet megjelenítéshez
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    // Ellenőrizzük, hogy a jelszavak egyeznek-e
-    if (this.user.password !== this.user.confirmPassword) {
+  // Regisztrációs űrlap elküldése
+  async onSubmit() {
+    this.errorMessage = ''; // Hibaüzenet alaphelyzetbe állítása
+
+    // Jelszavak egyezőségének ellenőrzése
+    if (this.user.password !== this.confirmPassword) {
       this.errorMessage = 'A jelszavak nem egyeznek!';
       return;
     }
 
-    // Regisztráció
-    const success = this.authService.register({
-      name: this.user.name,
-      email: this.user.email,
-      password: this.user.password
-    });
+    // Jelszó hosszának ellenőrzése (minimum 6 karakter)
+    if (this.user.password.length < 6) {
+      this.errorMessage = 'A jelszónak legalább 6 karakter hosszúnak kell lennie!';
+      return;
+    }
 
-    if (!success) {
-      this.errorMessage = 'Ez az email már használatban van!';
-    } else {
-      this.router.navigate(['/login']);
+    try {
+      // AuthService-ben lévő regisztrációs függvény meghívása
+      await this.authService.register(this.user);
+
+      
+      this.router.navigate(['/profile']);
+    } catch (error: any) {
+      console.error('Regisztrációs hiba:', error);
+
+      // Hibakódok kezelése és felhasználónak való megjelenítés
+      if (error.message) {
+        this.errorMessage = error.message;
+      } else {
+        this.errorMessage = 'Hiba történt a regisztráció során.';
+      }
     }
   }
 }

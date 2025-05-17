@@ -1,11 +1,36 @@
-<h2>Üdv, {{ currentUser?.name }}!</h2>
+<div class="profile-container">
+  <h2>Profil adatok</h2>
+  <p><strong>Név:</strong> {{ userName || 'Nincs megadva' }}</p>
+  <p><strong>Email:</strong> {{ currentUser.email }}</p>
 
-<h3>Órák, amikre jelentkeztél:</h3>
-<div class="session-container">
-  <div class="session-card" *ngFor="let session of userSessions">
-    <h4>{{ session.title }}</h4>
-    <p>Időpont: {{ session.date }}</p>
-    <p>Oktató: {{ session.instructor }}</p>
-    <button (click)="removeSession(session.id)">Óra leadása</button>
-  </div>
+  <h3>Jelszó módosítása</h3>
+  <form (ngSubmit)="changePassword()" #passwordForm="ngForm">
+    <label for="oldPassword">Régi jelszó:</label>
+    <input type="password" id="oldPassword" [(ngModel)]="oldPassword" name="oldPassword" required />
+
+    <label for="newPassword">Új jelszó:</label>
+    <input type="password" id="newPassword" [(ngModel)]="newPassword" name="newPassword" required minlength="6" />
+
+    <label for="confirmNewPassword">Új jelszó megerősítése:</label>
+    <input type="password" id="confirmNewPassword" [(ngModel)]="confirmNewPassword" name="confirmNewPassword" required minlength="6" />
+
+    <button type="submit" [disabled]="!passwordForm.form.valid">Jelszó módosítása</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+
+  <h3>Felvett órák</h3>
+  <ul *ngIf="userSessions.length > 0; else noSessions">
+    <li *ngFor="let session of userSessions">
+      {{ session.title }}
+    
+      <button (click)="removeSession(session.id)">Törlés</button>
+    </li>
+  </ul>
+  <ng-template #noSessions>
+    <p>Nincsenek felvett órák.</p>
+  </ng-template>
+
+  <button class="delete-profile" (click)="deleteProfile()">Profil törlése</button>
 </div>
